@@ -104,4 +104,90 @@
     </div>
 </section>
 
+<section class="py-20 bg-[#fffdf5]">
+    <div class="container mx-auto px-6 md:px-16">
+        <h2 class="text-3xl font-bold text-emerald-900 mb-10 border-b-4 border-emerald-900 inline-block">
+            {{ app()->getLocale() == 'en' ? 'Activity Documentation' : 'Dokumentasi Kegiatan' }}
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            @isset($activities)
+                @foreach($activities as $activity)
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+                    <img src="{{ asset('program/' . $activity->image) }}" class="w-full h-48 object-cover" alt="Gallery">
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-emerald-900">
+                            {{ app()->getLocale() == 'en' ? $activity->title_en : $activity->title_id }}
+                        </h3>
+                    </div>
+                </div>
+                @endforeach
+            @endisset
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="#" class="inline-flex items-center gap-2 bg-[#316b5a] hover:bg-[#255245] text-white px-8 py-3 rounded-full font-semibold transition-all shadow-lg">
+                {{ app()->getLocale() == 'en' ? 'View Gallery' : 'Lihat Galeri' }} <span class="text-xl">›</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-12 bg-white">
+    <div class="container mx-auto px-6 md:px-16">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div class="w-full lg:w-1/2">
+                <h2 class="text-3xl font-bold text-[#1a3a32] mb-4 border-b-2 border-gray-100 inline-block pb-2">Mari Berdonasi</h2>
+                <p class="text-xl font-bold text-[#1a3a32] mb-4">
+                    BSI. <span class="font-normal text-gray-600">Rekening,</span> 4835423860 <span class="font-normal text-gray-600">a.n. Ismaniar</span>
+                </p>
+                <a href="{{ route('donate', app()->getLocale()) }}" class="inline-block bg-[#ff6b00] hover:bg-orange-700 text-white font-bold px-10 py-3 rounded-full shadow-lg transition-all transform hover:scale-105">
+                    Donasi Sekarang <span class="ml-2">›</span>
+                </a>
+            </div>
+
+            <div class="w-full lg:w-1/2 bg-white border border-gray-100 shadow-2xl rounded-3xl p-8 flex justify-around items-center">
+                <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                    <div class="bg-[#f0f9f4] p-4 rounded-2xl group-hover:bg-[#dcfce7] transition-all">
+                        <svg class="w-10 h-10 text-[#2d5a4c]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    </div>
+                    <span class="text-xs font-bold text-[#1a3a32]">Transfer Bank</span>
+                </div>
+                <div class="h-16 w-[1px] bg-gray-100"></div>
+                <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                    <div class="bg-[#f0f9f4] p-4 rounded-2xl group-hover:bg-[#dcfce7] transition-all">
+                        <svg class="w-10 h-10 text-[#2d5a4c]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                    </div>
+                    <span class="text-xs font-bold text-[#1a3a32]">QR Code</span>
+                </div>
+                <div class="h-16 w-[1px] bg-gray-100"></div>
+                <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                    <div class="bg-[#f0f9f4] p-4 rounded-2xl group-hover:bg-[#dcfce7] transition-all">
+                        <svg class="w-10 h-10 text-[#2d5a4c]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <span class="text-xs font-bold text-[#1a3a32]">Konfirmasi Donasi</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-gradient-to-r from-[#1a3a32] to-[#2d5a4c] py-6 text-white">
+    <div class="container mx-auto px-6 md:px-16 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-phone"></i> +62 821 6901 8383
+            </div>
+            <div class="flex items-center gap-2">
+                <i class="fas fa-envelope"></i> acehalmsgivingcommunity@gmail.com
+            </div>
+        </div>
+        <div class="flex gap-4 text-xl">
+            <a href="#" class="hover:text-orange-400 transition-all"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="hover:text-orange-400 transition-all"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-orange-400 transition-all"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</footer>
+
 @endsection
