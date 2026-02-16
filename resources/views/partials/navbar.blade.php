@@ -6,10 +6,10 @@
 <body>
     <nav class="bg-white shadow-md">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            
+
             <div class="flex items-center space-x-3">
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-10">
-            <span class="text-green-700 font-bold text-lg">Aceh Almsgiving 
+            <span class="text-green-700 font-bold text-lg">Aceh Almsgiving
                 <p>Community (AAC)</p></span>
         </div>
 
@@ -18,7 +18,7 @@
                 <a href="#" class="hover:text-green-600">Tentang</a>
                 <a href="#" class="hover:text-green-600">Program</a>
                 <a href="#" class="hover:text-green-600">Galeri</a>
-                <a href="#" class="hover:text-green-600">Donasi</a>
+                <a href="{{ route('donate', app()->getLocale()) }}" class="hover:text-green-600">Donasi</a>
                 <a href="#" class="hover:text-green-600">Kontak</a>
             </div>
 
