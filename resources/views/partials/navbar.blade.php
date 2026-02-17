@@ -14,17 +14,31 @@
         </div>
 
             <div class="space-x-10 hidden md:flex">
-                <a href="#" class="hover:text-green-600">Beranda</a>
-                <a href="#" class="hover:text-green-600">Tentang</a>
-                <a href="#" class="hover:text-green-600">Program</a>
-                <a href="#" class="hover:text-green-600">Galeri</a>
+                <a href="{{ route('home', app()->getLocale()) }}" class="hover:text-green-600">Beranda</a>
+                <a href="{{ route('about', app()->getLocale()) }}" class="hover:text-green-600">Tentang</a>
+                <a href="{{ route('program', app()->getLocale()) }}" class="hover:text-green-600">Program</a>
+                <a href="{{ route('galeri', app()->getLocale()) }}" class="hover:text-green-600">Galeri</a>
                 <a href="{{ route('donate', app()->getLocale()) }}" class="hover:text-green-600">Donasi</a>
-                <a href="#" class="hover:text-green-600">Kontak</a>
+                <a href="{{ route('kontak', app()->getLocale()) }}" class="hover:text-green-600">Kontak</a>
             </div>
 
             <div>
-                <a href="/id" class="px-2">ID</a> |
-                <a href="/en" class="px-2">EN</a>
+               @php
+                    // Mengambil nama rute saat ini, misal 'about', 'galeri', dll.
+                    $currentRouteName = Route::currentRouteName();
+                    // Mengambil parameter rute saat ini (seperti ID atau slug jika ada)
+                    $routeParameters = Route::current()->parameters();
+                @endphp
+
+                <a href="{{ route($currentRouteName, array_merge($routeParameters, ['locale' => 'id'])) }}" 
+                class="px-2 {{ app()->getLocale() == 'id' ? 'font-bold text-green-700' : '' }}">
+                ID
+                </a> 
+                |
+                <a href="{{ route($currentRouteName, array_merge($routeParameters, ['locale' => 'en'])) }}" 
+                class="px-2 {{ app()->getLocale() == 'en' ? 'font-bold text-green-700' : '' }}">
+                EN
+                </a>
             </div>
 
         </div>

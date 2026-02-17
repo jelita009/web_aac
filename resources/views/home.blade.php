@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <a href="#" class="inline-flex items-center gap-2 bg-[#316b5a] hover:bg-[#255245] text-white px-6 py-3 rounded-lg font-semibold transition-all">
+            <a href="{{ route('about', app()->getLocale()) }}" class="inline-flex items-center gap-2 bg-[#316b5a] hover:bg-[#255245] text-white px-6 py-3 rounded-lg font-semibold transition-all">
                 Selengkapnya <span class="text-xl">›</span>
             </a>
         </div>
@@ -87,7 +87,7 @@
                             {{ Str::limit($description, 100) }}
                         </p>
 
-                        <a href="#" class="bg-orange-400 hover:bg-orange-500 text-white text-center py-2 px-4 rounded-xl font-bold transition-all mt-auto shadow-sm">
+                        <a href="{{ route('program', app()->getLocale()) }}" class="bg-orange-400 hover:bg-orange-500 text-white text-center py-2 px-4 rounded-xl font-bold transition-all mt-auto shadow-sm">
                             {{ app()->getLocale() == 'en' ? 'View Program ›' : 'Lihat Program ›' }}
                         </a>
                     </div>
@@ -126,7 +126,7 @@
         </div>
 
         <div class="text-center mt-12">
-            <a href="#" class="inline-flex items-center gap-2 bg-[#316b5a] hover:bg-[#255245] text-white px-8 py-3 rounded-full font-semibold transition-all shadow-lg">
+            <a href="{{ route('galeri', app()->getLocale()) }}" class="inline-flex items-center gap-2 bg-[#316b5a] hover:bg-[#255245] text-white px-8 py-3 rounded-full font-semibold transition-all shadow-lg">
                 {{ app()->getLocale() == 'en' ? 'View Gallery' : 'Lihat Galeri' }} <span class="text-xl">›</span>
             </a>
         </div>
