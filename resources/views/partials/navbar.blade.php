@@ -14,12 +14,12 @@
         </div>
 
             <div class="space-x-10 hidden md:flex">
-                <a href="{{ route('home', app()->getLocale()) }}" class="hover:text-green-600">Beranda</a>
-                <a href="{{ route('about', app()->getLocale()) }}" class="hover:text-green-600">Tentang</a>
+                <a href="{{ route('home', app()->getLocale()) }}" class="hover:text-green-600">{{ app()->getLocale() == 'en' ? 'Home' : 'Beranda' }}</a>
+                <a href="{{ route('about', app()->getLocale()) }}" class="hover:text-green-600">{{ app()->getLocale() == 'en' ? 'About' : 'Tentang' }}</a>
                 <a href="{{ route('program', app()->getLocale()) }}" class="hover:text-green-600">Program</a>
-                <a href="{{ route('galeri', app()->getLocale()) }}" class="hover:text-green-600">Galeri</a>
-                <a href="{{ route('donate', app()->getLocale()) }}" class="hover:text-green-600">Donasi</a>
-                <a href="{{ route('kontak', app()->getLocale()) }}" class="hover:text-green-600">Kontak</a>
+                <a href="{{ route('galeri', app()->getLocale()) }}" class="hover:text-green-600">{{ app()->getLocale() == 'en' ? 'Gallery' : 'Galeri' }}</a>
+                <a href="{{ route('donate', app()->getLocale()) }}" class="hover:text-green-600">{{ app()->getLocale() == 'en' ? 'Donations' : 'Donasi' }}</a>
+                <a href="{{ route('kontak', app()->getLocale()) }}" class="hover:text-green-600">{{ app()->getLocale() == 'en' ? 'Contact' : 'Kontak' }}</a>
             </div>
 
             <div>
@@ -30,12 +30,12 @@
                     $routeParameters = Route::current()->parameters();
                 @endphp
 
-                <a href="{{ route($currentRouteName, array_merge($routeParameters, ['locale' => 'id'])) }}" 
+                <a href="{{ route($currentRouteName, array_merge($routeParameters, ['locale' => 'id'])) }}"
                 class="px-2 {{ app()->getLocale() == 'id' ? 'font-bold text-green-700' : '' }}">
                 ID
-                </a> 
+                </a>
                 |
-                <a href="{{ route($currentRouteName, array_merge($routeParameters, ['locale' => 'en'])) }}" 
+                <a href="{{ route($currentRouteName, array_merge($routeParameters, ['locale' => 'en'])) }}"
                 class="px-2 {{ app()->getLocale() == 'en' ? 'font-bold text-green-700' : '' }}">
                 EN
                 </a>
