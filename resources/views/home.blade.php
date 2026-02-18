@@ -2,21 +2,20 @@
 
 @section('content')
 
-<section class="relative text-white bg-cover bg-center bg-no-repeat min-h-[500px] flex items-center"
+<section id="hero-section" class="relative text-white min-h-[550px] flex items-center overflow-hidden">
+    <div id="hero-bg" class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[3000ms] ease-out"
          style="background-image: url('{{ asset('images/fotobg1.png') }}');">
-
+    </div>
     <div class="absolute inset-0 bg-black/40"></div>
 
     <div class="relative container mx-auto px-6 py-32 z-10">
         <h1 class="text-5xl font-bold mb-6">
             {{ __('home.hero_title') }}
         </h1>
-
         <p class="mb-8 text-lg">
             {{ __('home.caption') }}
         </p>
-
-        <a href="#" class="bg-orange-500 hover:bg-orange-600 px-8 py-3 rounded-full font-bold transition duration-300">
+        <a href="{{ route('donate', app()->getLocale()) }}" class="bg-orange-500 hover:bg-orange-600 px-8 py-3 rounded-full font-bold transition duration-300 inline-block shadow-lg">
             {{ __('home.donate') }}
         </a>
     </div>
@@ -24,7 +23,6 @@
 
 <section class="py-20 bg-[#fffdf5]">
     <div class="container mx-auto px-6 md:px-16 flex flex-col md:flex-row items-center gap-12">
-
         <div class="w-full md:w-1/2">
             <h4 class="text-emerald-900 font-extrabold text-3xl mb-2 border-b-2 border-emerald-900 inline-block">
                 {{ app()->getLocale() == 'en' ? 'About Us' : 'Tentang Kami' }}
@@ -33,11 +31,9 @@
                 Aceh Almsgiving Community (AAC)
             </h4>
             <p class="text-gray-600 font-medium mb-6 italic">{{ __('home.since') }}</p>
-
             <p class="text-gray-700 leading-relaxed mb-8">
                 {{ __('home.text') }}
             </p>
-
             <div class="flex flex-wrap gap-4 mb-8">
                 <div class="bg-emerald-50 px-4 py-2 rounded-lg flex items-center gap-2 border border-emerald-100 shadow-sm">
                     <span class="text-emerald-700 font-bold">☘️ {{ app()->getLocale() == 'en' ? 'Charity & Social' : 'Sedekah & Sosial' }}</span>
@@ -49,19 +45,16 @@
                     <span class="text-emerald-700 font-bold">📚 {{ app()->getLocale() == 'en' ? 'Education & Economy' : 'Pendidikan & Ekonomi' }}</span>
                 </div>
             </div>
-
             <a href="{{ route('about', app()->getLocale()) }}" class="inline-flex items-center gap-2 bg-[#316b5a] hover:bg-[#255245] text-white px-6 py-3 rounded-lg font-semibold transition-all">
                 {{ app()->getLocale() == 'en' ? 'Read More' : 'Selengkapnya' }} <span class="text-xl">›</span>
             </a>
         </div>
-
         <div class="w-full md:w-1/2 relative">
             <div class="rounded-3xl overflow-hidden shadow-2xl rotate-1 group">
                 <img src="{{ asset('images/foto2.png') }}" alt="Kegiatan AAC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-r from-[#fffdf5] via-transparent to-transparent md:block hidden"></div>
             </div>
         </div>
-
     </div>
 </section>
 
@@ -74,21 +67,18 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
             @if(isset($programs) && $programs->count() > 0)
                 @foreach($programs as $program)
-                <div class="bg-[#fffdf5] rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full hover:shadow-md transition-shadow">
-                    <img src="{{ asset($program->image) }}" class="w-full h-48 object-cover" alt="Image">
-
+                <div class="hover-card bg-[#fffdf5] rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full transition-all duration-500">
+                    <div class="overflow-hidden">
+                        <img src="{{ asset($program->image) }}" class="card-img w-full h-48 object-cover transition-transform duration-700" alt="Image">
+                    </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-emerald-900 mb-3">
                             {{ app()->getLocale() == 'en' ? $program->title_en : $program->title_id }}
                         </h3>
-
                         <p class="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">
-                            @php
-                                $description = app()->getLocale() == 'en' ? $program->desc_en : $program->desc_id;
-                            @endphp
+                            @php $description = app()->getLocale() == 'en' ? $program->desc_en : $program->desc_id; @endphp
                             {{ Str::limit($description, 100) }}
                         </p>
-
                         <a href="{{ route('program', app()->getLocale()) }}" class="bg-orange-400 hover:bg-orange-500 text-white text-center py-2 px-4 rounded-xl font-bold transition-all mt-auto shadow-sm">
                             {{ app()->getLocale() == 'en' ? 'View Program ›' : 'Lihat Program ›' }}
                         </a>
@@ -97,9 +87,7 @@
                 @endforeach
             @else
                 <div class="col-span-full text-center py-10">
-                    <p class="text-gray-500 italic">
-                        {{ app()->getLocale() == 'en' ? 'No programs added yet.' : 'Belum ada program yang ditambahkan.' }}
-                    </p>
+                    <p class="text-gray-500 italic">{{ app()->getLocale() == 'en' ? 'No programs added yet.' : 'Belum ada program.' }}</p>
                 </div>
             @endif
         </div>
@@ -111,12 +99,13 @@
         <h2 class="text-3xl font-bold text-emerald-900 mb-10 border-b-4 border-emerald-900 inline-block">
             {{ app()->getLocale() == 'en' ? 'Activity Documentation' : 'Dokumentasi Kegiatan' }}
         </h2>
-
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
             @isset($activities)
                 @foreach($activities as $activity)
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
-                    <img src="{{ asset('program/' . $activity->image) }}" class="w-full h-48 object-cover" alt="Gallery">
+                <div class="hover-card bg-white rounded-2xl overflow-hidden shadow-sm transition-all duration-500">
+                    <div class="overflow-hidden">
+                        <img src="{{ asset($activity->image) }}" class="card-img w-full h-48 object-cover transition-transform duration-700" alt="Gallery">
+                    </div>
                     <div class="p-4 text-center">
                         <h3 class="font-bold text-emerald-900">
                             {{ app()->getLocale() == 'en' ? $activity->title_en : $activity->title_id }}
@@ -126,7 +115,6 @@
                 @endforeach
             @endisset
         </div>
-
         <div class="text-center mt-12">
             <a href="{{ route('galeri', app()->getLocale()) }}" class="inline-flex items-center gap-2 bg-[#316b5a] hover:bg-[#255245] text-white px-8 py-3 rounded-full font-semibold transition-all shadow-lg">
                 {{ app()->getLocale() == 'en' ? 'View Gallery' : 'Lihat Galeri' }} <span class="text-xl">›</span>
@@ -139,15 +127,16 @@
     <div class="container mx-auto px-6 md:px-16">
         <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div class="w-full lg:w-1/2">
-                <h2 class="text-3xl font-bold text-[#1a3a32] mb-4 border-b-2 border-gray-100 inline-block pb-2">{{ app()->getLocale() == 'en' ? 'Lets Donate'  : 'Mari Berdonasi' }}</h2>
+                <h2 class="text-3xl font-bold text-[#1a3a32] mb-4 border-b-2 border-gray-100 inline-block pb-2">
+                    {{ app()->getLocale() == 'en' ? 'Lets Donate' : 'Mari Berdonasi' }}
+                </h2>
                 <p class="text-xl font-bold text-[#1a3a32] mb-4">
-                    BSI. <span class="font-normal text-gray-600">{{ app()->getLocale() == 'en' ? 'Account' : 'Rekening' }},</span> 4835423860 <span class="font-normal text-gray-600">a.n. Ismaniar</span>
+                    BSI. <span class="font-normal text-gray-600">{{ app()->getLocale() == 'en' ? 'Account' : 'Rekening' }},</span> 4835423960 <span class="font-normal text-gray-600">a.n. Ismaniar</span>
                 </p>
                 <a href="{{ route('donate', app()->getLocale()) }}" class="inline-block bg-[#ff6b00] hover:bg-orange-700 text-white font-bold px-10 py-3 rounded-full shadow-lg transition-all transform hover:scale-105">
                     {{ app()->getLocale() == 'en' ? 'Donate Now' : 'Donasi Sekarang' }} <span class="ml-2">›</span>
                 </a>
             </div>
-
             <div class="w-full lg:w-1/2 bg-white border border-gray-100 shadow-2xl rounded-3xl p-8 flex justify-around items-center">
                 <div class="flex flex-col items-center gap-2 cursor-pointer group">
                     <div class="bg-[#f0f9f4] p-4 rounded-2xl group-hover:bg-[#dcfce7] transition-all">
@@ -174,22 +163,84 @@
     </div>
 </section>
 
-<footer class="bg-gradient-to-r from-[#1a3a32] to-[#2d5a4c] py-6 text-white">
-    <div class="container mx-auto px-6 md:px-16 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-        <div class="flex flex-col md:flex-row gap-4 md:gap-8">
-            <div class="flex items-center gap-2">
-                <i class="fas fa-phone"></i> +62 821 6901 8383
+<footer class="bg-[#1a3a32] text-white pt-16 pb-8 mt-10">
+    <div class="container mx-auto px-6 md:px-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <img src="{{ asset('images/logo.png') }}" class="h-12 bg-white rounded-full p-1" alt="Logo">
+                    <span class="font-bold text-xl tracking-wider uppercase">AAC Aceh</span>
+                </div>
+                <p class="text-gray-400 leading-relaxed italic">
+                    {{ app()->getLocale() == 'en' 
+                        ? 'Empowering the community through almsgiving and sustainable social action.' 
+                        : 'Memberdayakan masyarakat melalui sedekah dan aksi sosial berkelanjutan.' }}
+                </p>
             </div>
-            <div class="flex items-center gap-2">
-                <i class="fas fa-envelope"></i> acehalmsgivingcommunity@gmail.com
+            <div class="md:ml-12">
+                <h4 class="text-lg font-bold mb-6 border-b-2 border-orange-500 inline-block">Navigasi</h4>
+                <ul class="space-y-4 text-gray-400">
+                    <li><a href="{{ route('about', app()->getLocale()) }}" class="hover:text-orange-400 transition">Tentang Kami</a></li>
+                    <li><a href="{{ route('program', app()->getLocale()) }}" class="hover:text-orange-400 transition">Program</a></li>
+                    <li><a href="{{ route('galeri', app()->getLocale()) }}" class="hover:text-orange-400 transition">Galeri</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6 border-b-2 border-orange-500 inline-block">Hubungi Kami</h4>
+                <div class="space-y-4 text-gray-400">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-phone text-orange-500"></i> +62 821 6901 8388
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-envelope text-orange-500"></i> acehalmsgivingcommunity@gmail.com
+                    </div>
+                    <div class="flex gap-4 mt-6 text-2xl">
+                        <a href="#" class="hover:text-orange-500 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-orange-500 transition"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/6282169018388" class="hover:text-orange-500 transition"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="flex gap-4 text-xl">
-            <a href="#" class="hover:text-orange-400 transition-all"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="hover:text-orange-400 transition-all"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="hover:text-orange-400 transition-all"><i class="fab fa-twitter"></i></a>
+        <div class="border-t border-gray-700 pt-8 text-center text-gray-500 text-sm">
+            <p>&copy; {{ date('Y') }} Aceh Almsgiving Community (AAC). All Rights Reserved.</p>
         </div>
     </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Efek Zoom pada Hero Background saat Mouse Masuk area Hero
+        const heroSection = document.getElementById('hero-section');
+        const heroBg = document.getElementById('hero-bg');
+
+        if(heroSection && heroBg) {
+            heroSection.addEventListener('mouseenter', () => {
+                heroBg.style.transform = 'scale(1.1)';
+            });
+            heroSection.addEventListener('mouseleave', () => {
+                heroBg.style.transform = 'scale(1)';
+            });
+        }
+
+        // Efek Floating & Zoom Gambar pada Kartu (Program & Dokumentasi)
+        const cards = document.querySelectorAll('.hover-card');
+        cards.forEach(card => {
+            const img = card.querySelector('.card-img');
+            
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-12px)';
+                card.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
+                if(img) img.style.transform = 'scale(1.1)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = 'none';
+                if(img) img.style.transform = 'scale(1)';
+            });
+        });
+    });
+</script>
 
 @endsection

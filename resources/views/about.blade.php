@@ -7,7 +7,10 @@
 
 <div class="overflow-x-hidden font-sans text-gray-800 bg-white">
 
-    <section class="relative py-24 bg-green-700 text-white text-center">
+    <section class="relative py-24 bg-emerald-900 text-white text-center">
+         <div class="absolute inset-0 opacity-20">
+            <img src="{{ asset('images/fotobg1.png') }}" class="w-full h-full object-cover" alt="Background">
+        </div>
         <div class="container mx-auto px-6" data-aos="zoom-out">
             <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Aceh Almsgiving Community (AAC)</h1>
             <p class="text-xl opacity-90 italic">{{ __('about.hero_title') }}</p>

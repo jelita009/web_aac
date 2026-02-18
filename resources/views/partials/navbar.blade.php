@@ -19,7 +19,6 @@
                 <a href="{{ route('program', app()->getLocale()) }}" class="hover:text-green-600">Program</a>
                 <a href="{{ route('galeri', app()->getLocale()) }}" class="hover:text-green-600">{{ app()->getLocale() == 'en' ? 'Gallery' : 'Galeri' }}</a>
                 <a href="{{ route('donate', app()->getLocale()) }}" class="hover:text-green-600">{{ app()->getLocale() == 'en' ? 'Donations' : 'Donasi' }}</a>
-                <a href="{{ route('kontak', app()->getLocale()) }}" class="hover:text-green-600">{{ app()->getLocale() == 'en' ? 'Contact' : 'Kontak' }}</a>
             </div>
 
             <div>
