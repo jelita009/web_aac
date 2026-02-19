@@ -18,8 +18,8 @@
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
 
                     <div class="overflow-hidden">
-                        <img 
-                            src="{{ asset($activity->image) }}" 
+                        <img
+                            src="{{ asset($activity->image) }}"
                             class="w-full h-56 object-cover group-hover:scale-105 transition duration-300"
                             alt="Activity Image">
                     </div>

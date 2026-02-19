@@ -13,8 +13,8 @@
             {{ app()->getLocale() == 'en' ? 'Contact & Donation' : 'Kontak & Informasi Donasi' }}
         </h1>
         <p class="text-lg opacity-90 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-            {{ app()->getLocale() == 'en' 
-                ? 'Your contribution helps us build a better Aceh. Reach out to us for more information.' 
+            {{ app()->getLocale() == 'en'
+                ? 'Your contribution helps us build a better Aceh. Reach out to us for more information.'
                 : 'Kontribusi Anda membantu kami membangun Aceh yang lebih baik. Hubungi kami untuk informasi lebih lanjut.' }}
         </p>
     </div>
@@ -23,7 +23,7 @@
 <section class="py-20 bg-gray-50">
     <div class="container mx-auto px-6 md:px-16">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            
+
             <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100" data-aos="fade-right">
                 <h2 class="text-2xl font-bold text-emerald-900 mb-8 flex items-center gap-3">
                     <span class="bg-orange-100 p-2 rounded-lg">💳</span>
@@ -50,7 +50,7 @@
                 <div class="space-y-4">
                     <div class="flex items-start gap-4 p-4 bg-orange-50 rounded-xl border border-orange-100 italic text-sm text-gray-700">
                         <span>📍</span>
-                        <p>Koordinator / Pengelola Aceh Almsgiving Community. Rekening ini khusus untuk pengelolaan donasi kegiatan sosial.</p>
+                        <p>{{ __('donet.payment') }}</p>
                     </div>
                 </div>
             </div>
@@ -81,15 +81,15 @@
                     </div>
                 </a>
 
-                <div class="flex items-center p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
-                    <div class="bg-gray-100 p-4 rounded-xl text-gray-600">
+                <a href="" class="flex items-center p-6 bg-white rounded-2xl shadow-sm border border-gray-100 hover:border-gray-400 transition-all group">
+                    <div class="bg-gray-100 p-4 rounded-xl group-hover:bg-gray-600 group-hover:text-white transition-colors text-gray-600">
                         <i class="fas fa-map-marker-alt text-2xl"></i>
                     </div>
                     <div class="ml-6">
                         <p class="text-xs text-gray-400 uppercase font-bold">Wilayah Kerja</p>
                         <p class="text-lg font-bold text-emerald-900">Aceh, Indonesia</p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -106,11 +106,9 @@
         <div class="bg-emerald-50 rounded-3xl p-8 md:p-12 shadow-sm border border-emerald-100" data-aos="zoom-in">
             <div class="flex flex-col lg:flex-row gap-12 items-center">
                 <div class="lg:w-1/2">
-                    <p class="text-gray-700 leading-relaxed text-lg mb-6">
-                        AAC terbuka untuk bekerja sama dengan donatur individu, lembaga nasional, NGO internasional, institusi pendidikan, dan mitra pembangunan lainnya.
-                    </p>
+                    <p class="text-gray-700 leading-relaxed text-lg mb-6">{{ __('donet.partner') }}</p>
                     <div class="space-y-4">
-                        <h4 class="font-bold text-emerald-900 uppercase tracking-wider text-sm">Rekam Jejak Kolaborasi:</h4>
+                        <h4 class="font-bold text-emerald-900 uppercase tracking-wider text-sm">{{ app()->getLocale() == 'en' ? 'Collaborations Track Record' : 'Rekam Jejak Kolaborasi' }}:</h4>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-600">
                             <li class="flex items-center gap-2"><span class="text-orange-500 font-bold">✓</span> Majelis Alimat Indonesia</li>
                             <li class="flex items-center gap-2"><span class="text-orange-500 font-bold">✓</span> Aliansi Komunitas Aceh</li>
@@ -143,13 +141,11 @@
     <div class="container mx-auto px-6 text-center">
         <div class="bg-emerald-900 text-white p-10 rounded-3xl shadow-2xl overflow-hidden relative" data-aos="zoom-in">
             <div class="relative z-10">
-                <h3 class="text-2xl font-bold mb-4">Sudah Melakukan Donasi?</h3>
-                <p class="opacity-80 mb-8 max-w-xl mx-auto">
-                    Mohon konfirmasi agar kami dapat mencatat amanah Anda dan mengirimkan laporan bukti kegiatan sosial secara transparan.
-                </p>
-                <a href="https://wa.me/6282169018388?text=Halo%20AAC,%20saya%20ingin%20konfirmasi%20donasi" 
+                <h3 class="text-2xl font-bold mb-4">{{ app()->getLocale() == 'en' ? 'Have Made a Donation' : 'Sudah Melakukan Donasi' }}?</h3>
+                <p class="opacity-80 mb-8 max-w-xl mx-auto">{{ __('donet.konfirmasi') }}</p>
+                <a href="https://wa.me/6282169018388?text=Halo%20AAC,%20saya%20ingin%20konfirmasi%20donasi"
                    class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full transition-all transform hover:scale-110 shadow-lg">
-                    Konfirmasi via WhatsApp
+                    {{ app()->getLocale() == 'en' ? 'Confirmation via Whatsapp' : 'Konfirmasi via Whatsapp' }}
                 </a>
             </div>
             <div class="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full"></div>

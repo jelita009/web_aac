@@ -13,8 +13,8 @@
             {{ app()->getLocale() == 'en' ? 'Our Strategic Programs' : 'Program Strategis Kami' }}
         </h1>
         <p class="text-lg opacity-80 max-w-2xl mx-auto">
-            {{ app()->getLocale() == 'en' 
-                ? 'From humanitarian emergency response to sustainable community empowerment.' 
+            {{ app()->getLocale() == 'en'
+                ? 'From humanitarian emergency response to sustainable community empowerment.'
                 : 'Dari respon darurat kemanusiaan hingga pemberdayaan masyarakat yang berkelanjutan.' }}
         </p>
     </div>
@@ -27,17 +27,17 @@
             <div class="p-8 bg-white rounded-2xl shadow-sm border-t-4 border-orange-400" data-aos="fade-up" data-aos-delay="100">
                 <div class="text-3xl mb-4 text-orange-400"><i class="fas fa-hand-holding-heart"></i></div>
                 <h3 class="font-bold text-xl mb-2">{{ app()->getLocale() == 'en' ? 'Social Aid' : 'Bantuan Sosial' }}</h3>
-                <p class="text-gray-500 text-sm italic">Berfokus pada kebutuhan dasar pangan dan kesehatan masyarakat.</p>
+                <p class="text-gray-500 text-sm italic">{{ __('program.sosial') }}</p>
             </div>
             <div class="p-8 bg-white rounded-2xl shadow-sm border-t-4 border-emerald-500" data-aos="fade-up" data-aos-delay="200">
                 <div class="text-3xl mb-4 text-emerald-500"><i class="fas fa-university"></i></div>
                 <h3 class="font-bold text-xl mb-2">{{ app()->getLocale() == 'en' ? 'Infrastructure' : 'Infrastruktur' }}</h3>
-                <p class="text-gray-500 text-sm italic">Pembangunan fisik masjid, balai pengajian, dan fasilitas air bersih.</p>
+                <p class="text-gray-500 text-sm italic">{{ __('program.struktur') }}</p>
             </div>
             <div class="p-8 bg-white rounded-2xl shadow-sm border-t-4 border-blue-500" data-aos="fade-up" data-aos-delay="300">
                 <div class="text-3xl mb-4 text-blue-500"><i class="fas fa-seedling"></i></div>
                 <h3 class="font-bold text-xl mb-2">{{ app()->getLocale() == 'en' ? 'Eco-Empowerment' : 'Pemberdayaan' }}</h3>
-                <p class="text-gray-500 text-sm italic">Pengembangan ekonomi mandiri berbasis pelestarian alam.</p>
+                <p class="text-gray-500 text-sm italic">{{ __('program.pemberdayaan') }}</p>
             </div>
         </div>
     </div>
